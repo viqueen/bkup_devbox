@@ -21,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/viqueen/devbox/issues"
   },
-  "homepage": "https://github.com/viqueen/devbox#readme"
+  "homepage": "https://github.com/viqueen/devbox#readme",
+  "dependencies": {
+    "concat-stream": "^1.6.2",
+    "live-server": "^1.2.0",
+    "minimist": "^1.2.0",
+    "prettyjson": "^1.2.1"
+  }
 }

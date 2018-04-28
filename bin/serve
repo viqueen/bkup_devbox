@@ -1,0 +1,15 @@
+#! /usr/bin/env node
+
+'use strict';
+
+const path = require('path');
+const liveServer = require('live-server');
+const minimist = require('minimist');
+
+const ops = minimist(process.argv.slice(2));
+
+liveServer.start({
+    port: ops.p || 0,
+    roote: path.resolve(process.cwd(), ops._[0] || '.'),
+    open: true
+});

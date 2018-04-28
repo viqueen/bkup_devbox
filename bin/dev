@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+source selfedit.sh
+
 # @COMMAND portid [port]                    displays process listening on target port
 portid() {
     lsof -i :$1
