@@ -1,0 +1,25 @@
+{
+  "name": "devbox",
+  "version": "1.0.0",
+  "description": "viqueen devbox",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "./setup.sh post_install",
+    "setup:vim": "./setup.sh configure_vim",
+    "setup:prompt": "./setup.sh configure_prompt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/viqueen/devbox.git"
+  },
+  "keywords": [
+    "devbox",
+    "devtools"
+  ],
+  "author": "Hasnae R. <viqueen>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/viqueen/devbox/issues"
+  },
+  "homepage": "https://github.com/viqueen/devbox#readme"
+}
