@@ -10,6 +10,6 @@ const ops = minimist(process.argv.slice(2));
 
 liveServer.start({
     port: ops.p || 0,
-    roote: path.resolve(process.cwd(), ops._[0] || '.'),
+    root: path.resolve(process.cwd(), ops._[0] || '.'),
     open: true
 });
