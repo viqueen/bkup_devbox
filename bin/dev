@@ -57,6 +57,12 @@ addkey() {
     ssh-add -K ~/.ssh/id_rsa
 }
 
+SOURCES=~/sources
+
+src() {
+    cd ${SOURCES}
+}
+
 eval $@
 
 if [ -z $1 ];
