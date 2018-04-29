@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+source selfedit.sh
+
+build() {
+    atlas-mvn -e -T 0.75C clean install -DskipTests=true
+}
+
+eval $@
