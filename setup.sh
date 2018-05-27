@@ -37,6 +37,9 @@ function post_install() {
 }
 
 function configure_vim() {
+    # install vundle
+    git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
+
     # setup vim
     VIQUEEN_DEVBOX_HOME=$(cd "$(dirname "$0")" && pwd -P)
     ln -sfnv ${VIQUEEN_DEVBOX_HOME}/.vimrc ~/.vimrc
@@ -50,6 +53,10 @@ function configure_prompt() {
     VIQUEEN_DEVBOX_HOME=$(cd "$(dirname "$0")" && pwd -P)
     ln -sfnv ${VIQUEEN_DEVBOX_HOME}/.shell_prompt.sh ~/.shell_prompt.sh
     echo "source ~/.shell_prompt.sh" >> ~/.profile
+}
+
+function configure_atlas() {
+    echo "export ATLAS_MVN=$(which mvn)"
 }
 
 eval $@

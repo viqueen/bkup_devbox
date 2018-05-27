@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #
 # This shell prompt config file was created by promptline.vim
 #
