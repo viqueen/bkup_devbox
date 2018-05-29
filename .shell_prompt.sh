@@ -66,6 +66,15 @@ function __promptline_vcs_branch {
       return
     fi
   fi
+
+  # mercurial
+  if hash hg 2>/dev/null; then
+    if branch=$(hg branch 2>/dev/null); then
+      printf "%s" "${branch_symbol}${branch:-unknown}"
+      return
+    fi
+  fi
+
   return 1
 }
 function __promptline_cwd {
