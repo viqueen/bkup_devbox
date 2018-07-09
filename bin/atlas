@@ -2,8 +2,19 @@
 
 source selfedit.sh
 
+ATLAS_SOURCES=~/sources/ATLAS/
+
 build() {
     atlas-mvn -e -T 0.75C clean install -DskipTests=true
 }
 
+conf() {
+    cd ${ATLAS_SOURCES}/confluence-server
+}
+
 eval $@
+
+if [ -z $1 ];
+then
+    cd ${ATLAS_SOURCES}
+fi
