@@ -12,6 +12,11 @@ conf() {
     cd ${ATLAS_SOURCES}/confluence-server
 }
 
+pi() {
+    context=${1}
+    mvn confluence:install -Dhttp.port=8080 -Dcontext.path=${context}
+}
+
 eval $@
 
 if [ -z $1 ];
