@@ -29,6 +29,14 @@ branch() {
     git branch | grep '*'
 }
 
+recent() {
+    git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
+}
+
+merged() {
+    git branch --merged | egrep -v "(^\*|master|release)"
+}
+
 # @COMMAND gl                               pretty git log
 gl() {
     git log --graph --full-history --color --date=iso --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%x1b[35m%ad %x1b[0m%s %x1b[35m(%aE)""]]]]]]"
@@ -40,7 +48,6 @@ setver() {
 }
 
 release() {
-    setver
     mvn -N -B release:clean release:prepare release:perform
 }
 
