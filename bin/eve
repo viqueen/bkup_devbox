@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+source selfedit.sh
+
+EVELYN_SOURCES=~/sources/EVELYN/
+
+eval $@
+
+if [ -z $1 ];
+then
+    cd ${EVELYN_SOURCES}
+fi

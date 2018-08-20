@@ -1,0 +1,21 @@
+#! /usr/bin/env node
+
+'use strict';
+
+const program   = require('../lib/vimable');
+const Chance    = require('chance');
+const clipboard = require('child_process').spawn('pbcopy');
+
+const chance    = new Chance();
+
+program
+    .version('1.0.0')
+    .command('*')
+    .action(function (cmd) {
+        const value = chance[cmd]();
+        console.log(value);
+        clipboard.stdin.write(value);
+        clipboard.stdin.end();
+    });
+
+program.parse(process.argv);
