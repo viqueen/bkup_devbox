@@ -12,21 +12,23 @@ else
     exit 1
 fi
 
-function upgrade() {
-    version=${1}
-    mvn versions:set -DnewVersion=${1}
+_upgrade() {
+    target_version=${1}
+    mvn versions:set -DnewVersion=${target_version} -DgenerateBackupPoms=false
 }
 
 function major() {
-    upgrade "$((major_version + 1)).${minor_version}.${patch_version}-SNAPSHOT"
+   _upgrade "$((major_version + 1)).0.0-SNAPSHOT"
 }
 
 function minor() {
-    upgrade "${major_version}.$((minor_version + 1)).${patch_version}-SNAPSHOT"
-}
-
-function patch() {
-    upgrade "${major_version}.${minor_version}.$((patch_version + 1))-SNAPSHOT"
+    _upgrade "${major_version}.$((minor_version + 1)).0-SNAPSHOT"
 }
 
 eval $@
+
+if [ -z $1 ];
+then
+    echo current version: ${MVN_VERSION}
+fi
+
