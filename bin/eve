@@ -2,7 +2,7 @@
 
 source selfedit.sh
 
-EVELYN_SOURCES=~/sources/EVELYN/
+EVELYN_SOURCES=~/sources/VIQUEEN/
 
 eval $@
 
