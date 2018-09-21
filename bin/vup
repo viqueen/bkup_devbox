@@ -1,0 +1,32 @@
+#! /usr/bin/env bash
+
+MVN_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+
+if [[ $MVN_VERSION =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)-SNAPSHOT$ ]];
+then
+    major_version=${BASH_REMATCH[1]}
+    minor_version=${BASH_REMATCH[2]}
+    patch_version=${BASH_REMATCH[3]}
+else
+    echo invalid snapshot version
+    exit 1
+fi
+
+function upgrade() {
+    version=${1}
+    mvn versions:set -DnewVersion=${1}
+}
+
+function major() {
+    upgrade "$((major_version + 1)).${minor_version}.${patch_version}-SNAPSHOT"
+}
+
+function minor() {
+    upgrade "${major_version}.$((minor_version + 1)).${patch_version}-SNAPSHOT"
+}
+
+function patch() {
+    upgrade "${major_version}.${minor_version}.$((patch_version + 1))-SNAPSHOT"
+}
+
+eval $@
